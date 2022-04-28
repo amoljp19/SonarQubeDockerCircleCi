@@ -22,16 +22,30 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Checking Docker Commands
+      - setup_remote_docker:
+          version: 20.10.12   
+      - run: 
+          name: Docker commands
           command: |
-            docker -v
-            containerd -v
-            export my_group=$(id -gn)
-            newgrp docker
-            newgrp $my_group
-            docker ps -a
-            
-
-
+            service docker status
+            docker info     
+      # - run:
+      #     name: Build and push docker image
+      #     command: |
+      #       docker build -t amoljp19/sonarqubedockercircleci .
+      #       echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+      #       docker push amoljp19/sonarqubedockercircleci
+      # - run:
+      #     name: Start Service and Check That it’s Running
+      #     command: |
+      #       ifconfig
+      #       docker ps
+      #       docker container run -d -p 127.0.0.1:9000:9000 --name resumesendermvvm_remote_container amoljp19/resumesendermvvm_remote_image
+      #       docker ps
+      #       docker exec -it resumesendermvvm_remote_container curl http://127.0.0.1:9000
+      # - run:
+      #     name: Scanning by the Sonar Tool
+      #     command: |
+      #       echo "Running the scanning ..."
+      #       bash sonar_run.sh
 
