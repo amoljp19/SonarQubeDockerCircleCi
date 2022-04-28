@@ -27,7 +27,7 @@ jobs:
           command: |
             docker -v
             containerd -v
-            sudo docker ps -a
+            sudo usermod -aG docker $USER
             
 
 
