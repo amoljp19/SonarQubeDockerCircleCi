@@ -25,6 +25,7 @@ jobs:
       - run:
           name: Checking Docker Commands
           command: |
+            yum update -y
             docker -v
             docker ps -a
 
