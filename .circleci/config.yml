@@ -27,7 +27,7 @@ jobs:
       - run: 
           name: Docker commands
           command: |
-            docker info     
+            docker images   
       # - run:
       #     name: Build and push docker image
       #     command: |
