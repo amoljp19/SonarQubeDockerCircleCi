@@ -26,10 +26,7 @@ jobs:
           name: Checking Docker Commands
           command: |
             docker -v
-            sudo apt-get update
-            sudo apt-get remove docker docker-engine docker.io
-            sudo apt install docker.io
-            docker ps -a
+            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 
 
