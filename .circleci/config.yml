@@ -22,3 +22,11 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Checking Docker Commands
+          command: |
+            docker -v
+            docker ps -a
+
+
+
