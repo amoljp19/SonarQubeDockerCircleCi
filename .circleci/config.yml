@@ -27,8 +27,10 @@ jobs:
           command: |
             docker -v
             containerd -v
-            sudo usermod -aG docker $USER
-            sudo reboot
+            export my_group=$(id -gn)
+            newgrp docker
+            newgrp $my_group
+            docker ps -a
             
 
 
