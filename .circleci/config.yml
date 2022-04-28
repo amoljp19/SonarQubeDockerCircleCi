@@ -25,9 +25,9 @@ jobs:
       - run:
           name: Checking Docker Commands
           command: |
-            service docker status
             docker -v
             containerd -v
+            sudo docker ps -a
             
 
 
