@@ -25,7 +25,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.12   
       - run: 
-          name: Docker commands
+          name: Docker command
           command: |
             docker run -it ubuntu /bin/bash
       # - run:
