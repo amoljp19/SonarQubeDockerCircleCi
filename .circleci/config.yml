@@ -28,7 +28,7 @@ jobs:
           name: Docker commands
           command: |
             ifconfig
-            docker run -td --name myjenkins -p 8080:8080 jenkins
+            docker run -d --name mysonarqube -p 9000:9000 -p 9092:9092 sonarqube
       # - run:
       #     name: Build and push docker image
       #     command: |
