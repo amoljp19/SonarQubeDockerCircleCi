@@ -17,6 +17,7 @@ jobs:
           name: Download Dependencies
           command: |
             sudo chmod +x gradlew
+            ifconfig
             ./gradlew androidDependencies --no-daemon
       - save_cache:
           paths:
