@@ -27,7 +27,7 @@ jobs:
       - run: 
           name: Docker commands
           command: |
-            docker run -it --name amolimage ubuntu /bin/bash
+            docker run -td --name imptechserver -p 80:80 ubuntu
       # - run:
       #     name: Build and push docker image
       #     command: |
