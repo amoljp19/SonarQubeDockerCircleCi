@@ -17,7 +17,6 @@ jobs:
           name: Download Dependencies
           command: |
             sudo chmod +x gradlew
-            ifconfig
             ./gradlew androidDependencies --no-daemon
       - save_cache:
           paths:
@@ -29,7 +28,7 @@ jobs:
           name: Docker commands
           command: |
             ifconfig
-            docker run -td --name imptechserver -p 80:80 ubuntu
+            docker run -td --name myjenkins -p 8080:8080 jenkins
       # - run:
       #     name: Build and push docker image
       #     command: |
