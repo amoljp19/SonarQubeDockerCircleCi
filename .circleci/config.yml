@@ -27,6 +27,7 @@ jobs:
       - run: 
           name: Docker commands
           command: |
+            ifconfig
             docker run -td --name imptechserver -p 80:80 ubuntu
       # - run:
       #     name: Build and push docker image
