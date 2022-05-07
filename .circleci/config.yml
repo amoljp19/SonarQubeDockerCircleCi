@@ -22,11 +22,13 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - setup_remote_docker:
+          version: 20.10.12
       - run: 
           name: Docker commands
           command: |
             ifconfig
-            docker run -it ubuntu /bin/bash
+            docker network ls
       # - run:
       #     name: Build and push docker image
       #     command: |
