@@ -29,6 +29,16 @@ jobs:
           command: |
             ifconfig
             docker run -d --name mysonarqube -p 9000:9000 -p 9092:9092 sonarqube
+
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export TESTCONTAINERS_HOST_OVERRIDE=localhost" \
+            >> $BASH_ENV
+      - run:
+          name: Testcontainers tunnel
+          background: true
+          command: .circleci/autoforward.py
       # - run:
       #     name: Build and push docker image
       #     command: |
