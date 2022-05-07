@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Testcontainers tunnel
           background: true
-          command: .circleci/autoforward.py
+          command: sh .circleci/autoforward.py
       # - run:
       #     name: Build and push docker image
       #     command: |
