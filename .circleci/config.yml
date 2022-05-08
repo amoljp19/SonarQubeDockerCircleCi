@@ -28,7 +28,7 @@ jobs:
           name: Docker commands
           command: |
             ifconfig
-            docker network ls
+            docker networl list
       # - run:
       #     name: Build and push docker image
       #     command: |
