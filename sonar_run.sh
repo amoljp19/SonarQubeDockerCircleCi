@@ -21,7 +21,7 @@ if [ "$QGSTATUS" = "OK" ]
 then
 echo "Status is OK"
 echo "Stopping and removing docker images ...."
-docker-compose -f docker-compose-sonar.yml down --rmi all
+docker-compose -f docker-compose.yml down --rmi all
 echo "Sonar scanning has successfully ended with the status 'OK'"
 elif [ "$QGSTATUS" = "WARN" ]
 then
