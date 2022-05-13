@@ -1,8 +1,8 @@
 #!/bin/bash
-docker-compose -f docker-compose-sonar.yml build
-docker-compose -f docker-compose-sonar.yml up -d
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up -d
 sudo apt-get install jq -y
-PROJECTKEY="sonarbackend"
+PROJECTKEY="SonarQubeDockerCircleCi"
 Check=`curl -s -u admin:admin http://localhost:9000/api/qualitygates /project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr - d '"'`
 max_retry=30
 counter=0
