@@ -22,13 +22,8 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: "install docker.io, docker compose and jq"
-          command: |
-            sudo apt-get update
-            sudo apt install docker.io
-            sudo apt install docker-compose
-            sudo apt-get install jq
+      - setup_remote_docker:
+          version: 20.10.12
       - run:
           name: "Checking docker commands"
           command: |
@@ -41,12 +36,14 @@ jobs:
             docker-compose -f docker-compose.yml build
             docker-compose -f docker-compose.yml up -d
       - run:
-          name: "docker commands"
+          name: "install jq"
           command: |
-            docker ps
+            sudo apt-get update
+            sudo apt-get install jq
       - run:
           name: "Scanning by the Sonar Tool"
           command: |
+            docker ps 
             echo "Running  the scanning ..."
             bash sonar_run.sh
             docker ps
