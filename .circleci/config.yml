@@ -22,18 +22,17 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - setup_remote_docker:
+          version: 20.10.12
       - run:
           name: "Scanning by the Sonar Tool"
           command: |
             echo "Running  the scanning ..."
             bash sonar_run.sh
-#      - setup_remote_docker:
-#          version: 20.10.12
-#      - run:
-#          name: Docker commands
-#          command: |
-#            ifconfig
-#            docker run -it --name ubuntumachine ubuntu
+#            - run:
+      #          name: Docker commands
+      #          command: |
+      #            docker run -it --name ubuntumachine ubuntu
       # - run:
       #     name: Build and push docker image
       #     command: |
