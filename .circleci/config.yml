@@ -38,7 +38,7 @@ jobs:
           name: "Scanning by the Sonar Tool"
           command: |
             docker ps
-            docker logs
+            docker log
             echo "Running the scanning ..."  if [[ $CIRCLE_TAG =~ ^prod$ ]]; then
             bash sonar_run.sh; fi;
             docker ps
