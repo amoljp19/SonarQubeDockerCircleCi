@@ -39,7 +39,6 @@ jobs:
           command: |
             docker ps
             echo "Running the scanning ..."
-            /open-tunnel.sh
             bash sonar_run.sh
             docker ps
       #      - setup_remote_docker:
