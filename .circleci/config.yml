@@ -25,10 +25,9 @@ jobs:
       - setup_remote_docker:
           version: 20.10.12
       - run:
-          name: "docker compose build and up"
+          name: "docker compose only build"
           command: |
             docker-compose -f docker-compose.yml build
-            docker-compose -f docker-compose.yml up
       - run:
           name: "install jq package"
           command: |
