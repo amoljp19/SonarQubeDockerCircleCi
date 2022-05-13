@@ -1,3 +1,14 @@
+buildscript {
+    ext {
+        compose_version = '1.1.1'
+        ext.jacocoVersion = '0.8.7'
+    }
+    dependencies {
+        classpath "org.jacoco:org.jacoco.core:$jacocoVersion"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
+    }
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.1.0' apply false

@@ -1,0 +1,20 @@
+sonarqube {
+    properties {
+        property "sonar.projectKey", "SonarQubeDockerCircleCi"
+        property "sonar.projectName", "SonarQubeDockerCircleCi"
+        property "sonar.projectVersion", "1.0"
+        // property "sonar.exclusions", "robospice/**/*"
+        property "sonar.host.url", "http://localhost:9000" //  TODO: - Setup your Sonarqube server address
+        //property "sonar.login", "5f590b351d8e82a0d1d0ce6319afcc547d488434"
+        // ** Below two lines are mandatory and most important to show coverage on sonar **
+        property "sonar.java.binaries", "target/classes,app/build/tmp/kotlin-classes"
+        property "sonar.sources", "src/main/java"
+        property "sonar.tests", "src/test/java" //, src/androidTest/java"  //add if android ui or instrumentation test
+        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.junit.reportsPaths", "build/test-results/testDebugUnitTest"
+        property "sonar.android.lint.report", "build/outputs/lint-results"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+    }
+}

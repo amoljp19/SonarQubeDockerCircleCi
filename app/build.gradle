@@ -1,7 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'jacoco'
+    id 'org.sonarqube'
 }
+
+apply from: "$project.rootDir/tools/jacoco.gradle"
+apply from: "$project.rootDir/tools/sonar.gradle"
+
 
 android {
     compileSdk 31
