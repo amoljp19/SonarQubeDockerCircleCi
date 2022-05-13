@@ -1,6 +1,4 @@
 #!/bin/bash
-docker-compose -f docker-compose.yml build
-docker-compose -f docker-compose.yml up
 PROJECTKEY="SonarQubeDockerCircleCi"
 Check=`curl -s -u admin:admin http://localhost:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 max_retry=30
