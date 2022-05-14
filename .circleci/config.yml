@@ -40,6 +40,7 @@ jobs:
           command: |
             docker ps
             echo "Running the scanning ..."
+            ssh remote-docker
             bash sonar_run.sh
             docker ps
       #      - setup_remote_docker:
