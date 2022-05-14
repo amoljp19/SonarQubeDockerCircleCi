@@ -25,7 +25,7 @@ docker-compose -f docker-compose.yml down --rmi all
 echo "Sonar scanning has successfully ended with the status 'OK'"
 elif [ "$QGSTATUS" = "WARN" ]
 then
-echo "Status is WARN. Check out the quality of the products at  http://localhost:9000"
+echo "Status is WARN. Check out the quality of the products at  http://localhost:9000" 
 exit 1 # terminate and indicate error
 elif [ "$QGSTATUS" = "ERROR" ]
 then
