@@ -34,7 +34,7 @@ jobs:
           name: "Scanning by the Sonar Tool"
           command: |
             echo "Running the scanning ..."
-            bash /src/sonar_run.sh
+            bash sonar_run.sh
       #      - setup_remote_docker:
       #          version: 20.10.12
 #            - run:
