@@ -13,7 +13,7 @@ until [ "$Check" == "OK" ] || [ "$Check" = "ERROR" ] || [ "$Check" ==  "WARN" ];
  echo "Retrying. Try #$counter"
  ((counter++))
 
-Check=`curl -s -u admin:admin http://sonar-server:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
+Check=`curl -s -u admin:admin http://127.0.0.1:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 echo "Check : #$Check"
 done
 QGSTATUS=`curl -s -u admin:admin http://localhost:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
