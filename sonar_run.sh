@@ -1,6 +1,5 @@
 #!/bin/bash
-docker-compose -f docker-compose.yml build
-docker-compose -f docker-compose.yml up -d
+ssh remote-docker
 PROJECTKEY="SonarQubeDockerCircleCi"
 Check=`curl -s -u admin:admin http://localhost:9000/api/qualitygates /project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 max_retry=30
@@ -25,7 +24,7 @@ docker-compose -f docker-compose.yml down --rmi all
 echo "Sonar scanning has successfully ended with the status 'OK'"
 elif [ "$QGSTATUS" = "WARN" ]
 then
-echo "Status is WARN. Check out the quality of the products at  http://localhost:9000" 
+echo "Status is WARN. Check out the quality of the products at  http://localhost:9000"
 exit 1 # terminate and indicate error
 elif [ "$QGSTATUS" = "ERROR" ]
 then
