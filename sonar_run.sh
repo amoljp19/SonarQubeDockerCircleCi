@@ -2,7 +2,7 @@
 docker-compose -f docker-compose.yml build
 docker-compose -f docker-compose.yml up -d
 PROJECTKEY="SonarQubeDockerCircleCi"
-Check=`curl -s -u admin:admin http://localhost:9000/api/qualitygates /project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
+Check=`curl -s -u admin:admin http://172.18.0.2:9000/api/qualitygates /project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 max_retry=30
 counter=0
 until [ "$Check" == "OK" ] || [ "$Check" = "ERROR" ] || [ "$Check" ==  "WARN" ];
@@ -13,10 +13,10 @@ until [ "$Check" == "OK" ] || [ "$Check" = "ERROR" ] || [ "$Check" ==  "WARN" ];
  echo "Retrying. Try #$counter"
  ((counter++))
 
-Check=`curl -s -u admin:admin http://127.0.0.1:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
+Check=`curl -s -u admin:admin http://172.18.0.2:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 echo "Check : #$Check"
 done
-QGSTATUS=`curl -s -u admin:admin http://localhost:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
+QGSTATUS=`curl -s -u admin:admin http://172.18.0.2:9000/api/qualitygates/project_status?projectKey=$PROJECTKEY | jq '.projectStatus.status' | tr -d '"'`
 if [ "$QGSTATUS" = "OK" ]
 then
 echo "Status is OK"
