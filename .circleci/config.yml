@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:current
-      resource_class: large
     working_directory: ~/src
     docker:
       - image: circleci/android:api-30
@@ -30,6 +27,9 @@ jobs:
           name: Scanning by the Sonar Tool
           command: |
             echo "Running the scanning ..."
+            sudo apt-get update
+            sudo apt install docker.io
+            sudo apt install docker-compose
             bash sonar_run.sh
 
 
