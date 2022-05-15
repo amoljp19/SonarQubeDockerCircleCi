@@ -1,10 +1,9 @@
 version: 2
-executor:
-  machine: ubuntu-2004:202010-01
-#  name: android/android-machine
-#  resource-class: xlarge
 jobs:
   build:
+    machine:
+      image: ubuntu-2004:current
+      resource_class: large
     working_directory: ~/src
     docker:
       - image: circleci/android:api-30
