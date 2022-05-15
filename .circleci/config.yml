@@ -1,8 +1,8 @@
 version: 2
 executor:
-  machine: true
-  name: android/android-machine
-  resource-class: xlarge
+  machine: ubuntu-2004:202010-01
+#  name: android/android-machine
+#  resource-class: xlarge
 jobs:
   build:
     working_directory: ~/src
