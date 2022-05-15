@@ -4,7 +4,6 @@ jobs:
     working_directory: ~/src
     docker:
       - image: circleci/android:api-30
-      - image: circleci/sonarqube:8.9.1-community
     environment:
       JVM_OPTS: -Xmx8192m
     steps:
@@ -24,6 +23,19 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+  executor:
+    machine: true
+    name: android/android-machine
+    resource-class: xlarge
+    steps:
+      - run:
+          name: Scanning by the Sonar Tool
+          command: |
+              echo "Running the scanning ..."
+              bash sonar_run.sh
+
+
 
 #      - setup_remote_docker:
 #          version: 20.10.12
