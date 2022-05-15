@@ -23,36 +23,27 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - setup_remote_docker:
+          version: 20.10.12
       - run:
-          name: Scanning by the Sonar Tool
+          name: "docker compose build and up"
+          command: |
+            docker-compose -f docker-compose.yml build
+            docker-compose -f docker-compose.yml up -d
+      - run:
+          name: "install jq"
+          command: |
+            sudo apt-get update
+            sudo apt-get install jq
+      - run:
+          name: "Scanning by the Sonar Tool"
           command: |
             echo "Running the scanning ..."
-            sudo apt-get update
-            sudo apt install docker.io
-            sudo apt install docker-compose
             bash sonar_run.sh
 
-
-
-
-
-#      - setup_remote_docker:
-#          version: 20.10.12
-#      - run:
-#          name: "docker compose build and up"
-#          command: |
-#            docker-compose -f docker-compose.yml build
-#            docker-compose -f docker-compose.yml up -d
-#      - run:
-#          name: "install jq"
-#          command: |
-#            sudo apt-get update
-#            sudo apt-get install jq
-#      - run:
-#          name: "Scanning by the Sonar Tool"
-#          command: |
-#            echo "Running the scanning ..."
-#            bash sonar_run.sh
+# IMP           above few steps to run sonar_run.sh in remote docker using "ssh remote-docker" command. just copy past curl command
+#         when docker goes into remote environment, as due to security reason circleci doesnt allow direct communication and thats why,
+#      we are not able to connect with localhost on 9000 port, and their is not any other way till now as researched lot, in future might be hope for best.
       #      - setup_remote_docker:
       #          version: 20.10.12
 #            - run:

@@ -4,7 +4,7 @@ RUN cd /dist && mvn clean install
 WORKDIR /dist/
 CMD sleep 150 && mvn sonar:sonar \
 -Dsonar.host.url=http://sonar-server:9000 \
--Dsonar.language=java \
+-Dsonar.language=kotlin \
 -Dsonar.login=admin \
 -Dsonar.password=admin \
 -Dsonar.projectKey=SonarQubeDockerCircleCi
