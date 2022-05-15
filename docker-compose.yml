@@ -4,6 +4,8 @@ services:
     image: sonarqube:8.9.1-community
     ports:
       - 9000:9000
+    networks:
+      - sonarnet
 
   sonar-scanner:
     image: maven:3.6.3-openjdk-8
@@ -12,3 +14,6 @@ services:
       dockerfile: MavenReactor/Dockerfile
     depends_on:
       - sonar-server
+
+networks:
+  sonarnet:
