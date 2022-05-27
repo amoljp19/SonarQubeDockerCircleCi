@@ -5,7 +5,7 @@ sonarqube {
         property "sonar.projectVersion", "1.0"
         // property "sonar.exclusions", "robospice/**/*"
         property "sonar.host.url", "http://localhost:9000" //  TODO: - Setup your Sonarqube server address
-        //property "sonar.login", "5f590b351d8e82a0d1d0ce6319afcc547d488434"
+        property "sonar.login", "af6974c714142b4e2ca27926b02aeb4eb17eff60"
         // ** Below two lines are mandatory and most important to show coverage on sonar **
         property "sonar.java.binaries", "target/classes,app/build/tmp/kotlin-classes"
         property "sonar.sources", "src/main/java"
