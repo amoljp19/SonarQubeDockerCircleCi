@@ -1,4 +1,9 @@
-version: 2
+version: 2.1
+
+orbs:
+  kelvin: kelvinfli/demo@0.0.2
+  softaai: softaai/as-build-deploy@0.0.1 #orb version
+
 jobs:
   build:
     working_directory: ~/src
@@ -16,7 +21,7 @@ jobs:
       - run:
           name: Download Dependencies
           command: |
-            ifconfig
+            aws-as/test-my-app
             sudo chmod +x gradlew
             ./gradlew androidDependencies --no-daemon
       - save_cache:
