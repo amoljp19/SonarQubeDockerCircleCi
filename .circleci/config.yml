@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  kelvin: kelvinfli/demo@0.0.2
   softaai: softaai/as-build-deploy@0.0.1 #orb version
 
 jobs:
