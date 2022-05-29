@@ -2,14 +2,14 @@ version: 2.1
 
 orbs:
   kelvin: kelvinkfli/demo@0.0.2
-#  aws-eks: skimke/w-aws-eks@0.0.2
+  aws-eks: skimke/eks-build-deploy@0.0.1
 #  build-source: softaai/build-source@0.0.1
 
 workflows:
     main:
       jobs:
         - kelvin/lint-test-build-deploy
-#        - aws-eks/create-deployment
+        - aws-eks/create-deployment
 #        - build-source/build
 #jobs:
 #  build:
