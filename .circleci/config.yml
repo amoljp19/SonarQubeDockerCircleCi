@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   kelvin: kelvinkfli/demo@0.0.2
-  aws-eks: skimke/eks-build-deploy@0.0.1
+  aws-eks: softaai/eks-build-deploy@0.0.1
 #  build-source: softaai/build-source@0.0.1
 
 workflows:
