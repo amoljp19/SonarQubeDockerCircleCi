@@ -1,0 +1,14 @@
+version: 2.1
+
+orbs:
+  aws-eks: circleci/aws-eks@1.0.3
+  kubernetes: circleci/kubernetes@0.11.2
+
+jobs:
+  create-deployment:
+    executor: aws-eks/python3
+    steps:
+      - checkout
+      - run:
+          name: "AWS EKS kubeconfig update"
+          command: echo "Successfully updated"
